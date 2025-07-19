@@ -67,3 +67,23 @@ type DeepSeekResponse struct {
 	Choices []Choice `json:"choices"`
 	Usage   Usage    `json:"usage"`
 }
+
+type StreamResponse struct {
+	Data  string `json:"data"`
+	Event string `json:"event"`
+}
+
+type StreamChunk struct {
+	ID      string   `json:"id"`
+	Object  string   `json:"object"`
+	Model   string   `json:"model"`
+	Choices []Choice `json:"choices"`
+	Created int64    `json:"created"`
+}
+
+type StreamRequest struct {
+	Text      string `json:"text" binding:"required"`
+	From      string `json:"from,omitempty"`
+	To        string `json:"to,omitempty"`
+	MaxLength int    `json:"max_length,omitempty"`
+}
